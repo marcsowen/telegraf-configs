@@ -25,7 +25,7 @@ for station_id, station_data in response["data"].items():
                 "timestamp_end": timestamp_data[0], # CET
                 "station_id": station_id,
                 "sensor_id": sensor_data[0],
-                "data_complete": timestamp_data[2],
+                "data_incomplete": timestamp_data[2],
                 "aqi_overall": timestamp_data[1],
                 "aqi": float(sensor_data[3]),
                 "value": sensor_data[1]
