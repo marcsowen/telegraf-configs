@@ -25,7 +25,7 @@ for device in response:
         attributes = device["attributes"]
         formatted_entry = {
             "timestamp": device["lastSeen"],
-            "id": attributes["serialNumber"],
+            "serialNumber": attributes["serialNumber"],
             "name": attributes["customName"],
             "productCode": attributes["productCode"],
             "firmwareVersion": attributes["firmwareVersion"],
