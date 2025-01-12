@@ -12,7 +12,7 @@ yesterday = (datetime.today() - timedelta(days=1)).strftime("%Y-%m-%d")
 today = datetime.today().strftime("%Y-%m-%d")
 
 response = json.loads(requests.get("https://www.umweltbundesamt.de/api/air_data/v3/airquality/json?date_from="
-                                   + yesterday + "&time_from=1&date_to=" + today + "&time_to=24&station=" + station_str)
+                                   + yesterday + "&time_from=22&date_to=" + today + "&time_to=24&station=" + station_str)
                       .content.decode('UTF-8'))
 
 formatted_data = []
