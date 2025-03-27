@@ -52,8 +52,8 @@ for region_code in region_codes:
             "type": "feedIn",
             "name": feed_in.get("name"),
             "usage": float(feed_in.get("usage")) * 4,
-            "numberOfInstallations": int(feed_in.get("numberOfInstallations")),
-            "installedCapacity": float(feed_in.get("installedCapacity")),
+            **({"numberOfInstallations": int(feed_in.get("numberOfInstallations"))} if feed_in.get("numberOfInstallations") else {}),
+            **({"installedCapacity": float(feed_in.get("installedCapacity"))} if feed_in.get("installedCapacity") else {}),
             "autarky": autarky,
             "dailyCo2Savings": daily_co2_savings
         }
