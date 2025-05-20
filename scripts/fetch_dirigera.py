@@ -10,12 +10,9 @@ import yaml
 
 urllib3.disable_warnings()
 
-dirigera_ip="192.168.178.63"
 config = yaml.safe_load(open("/etc/dirigera.yaml"))
-
 headers = {'Authorization': 'Bearer ' + config["access_token"]}
-
-response = json.loads(requests.get("https://" + dirigera_ip + ":8443/v1/devices/", headers=headers, verify=False)
+response = json.loads(requests.get("https://" + config["ip"] + ":8443/v1/devices/", headers=headers, verify=False)
                       .content.decode('UTF-8'))
 
 formatted_data = []
