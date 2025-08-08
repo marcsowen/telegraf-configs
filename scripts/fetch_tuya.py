@@ -28,7 +28,7 @@ formatted_data = []
 formatted_entry = {
         "timestamp": int(time.time()),
         "device_id": d.id,
-        "switch": status['1'],
+        "switch": 1 if status['1'] == True else 0,
         "mode": mode_mapping[status['2']],
         "temp_set": status['4'] / 10,
         "work_mode": work_mode_mapping[status['5']],
