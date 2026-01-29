@@ -21,18 +21,19 @@ for device in response:
     if device["deviceType"] == "environmentSensor":
         attributes = device["attributes"]
         formatted_entry = {
-            "timestamp": device["lastSeen"],
-            "serialNumber": attributes["serialNumber"],
-            "name": attributes["customName"],
-            "productCode": attributes["productCode"],
-            "firmwareVersion": attributes["firmwareVersion"],
-            "hardwareVersion": attributes["hardwareVersion"],
-            "currentPM25": attributes["currentPM25"],
-            "currentRH": attributes["currentRH"],
-            "currentTemperature": attributes["currentTemperature"],
-            "maxMeasuredPM25": attributes["maxMeasuredPM25"],
-            "minMeasuredPM25": attributes["minMeasuredPM25"],
-            "vocIndex": attributes["vocIndex"],
+            "timestamp": device.get("lastSeen"),
+            "serialNumber": attributes.get("serialNumber"),
+            "name": attributes.get("customName"),
+            "productCode": attributes.get("productCode"),
+            "firmwareVersion": attributes.get("firmwareVersion"),
+            "hardwareVersion": attributes.get("hardwareVersion"),
+            "currentPM25": attributes.get("currentPM25"),
+            "currentRH": attributes.get("currentRH"),
+            "currentCO2": attributes.get("currentCO2"),
+            "currentTemperature": attributes.get("currentTemperature"),
+            "maxMeasuredPM25": attributes.get("maxMeasuredPM25"),
+            "minMeasuredPM25": attributes.get("minMeasuredPM25"),
+            "vocIndex": attributes.get("vocIndex"),
         }
 
         formatted_data.append(formatted_entry)
