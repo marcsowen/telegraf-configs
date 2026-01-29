@@ -21,6 +21,7 @@ for device in response:
     if device["deviceType"] == "environmentSensor":
         attributes = device["attributes"]
         formatted_entry = {
+            "id": device.get("id"),
             "timestamp": device.get("lastSeen"),
             "serialNumber": attributes.get("serialNumber"),
             "name": attributes.get("customName"),
@@ -33,6 +34,8 @@ for device in response:
             "currentTemperature": attributes.get("currentTemperature"),
             "maxMeasuredPM25": attributes.get("maxMeasuredPM25"),
             "minMeasuredPM25": attributes.get("minMeasuredPM25"),
+            "maxMeasuredCO2": attributes.get("maxMeasuredCO2"),
+            "minMeasuredCO2": attributes.get("minMeasuredCO2"),
             "vocIndex": attributes.get("vocIndex"),
         }
 
