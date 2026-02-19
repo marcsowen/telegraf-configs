@@ -18,27 +18,29 @@ response = json.loads(requests.get("https://" + config["ip"] + ":8443/v1/devices
 formatted_data = []
 
 for device in response:
-    if device["deviceType"] == "environmentSensor":
-        attributes = device["attributes"]
-        formatted_entry = {
-            "id": device.get("id"),
-            "timestamp": device.get("lastSeen"),
-            "serialNumber": attributes.get("serialNumber"),
-            "name": attributes.get("customName"),
-            "productCode": attributes.get("productCode"),
-            "firmwareVersion": attributes.get("firmwareVersion"),
-            "hardwareVersion": attributes.get("hardwareVersion"),
-            "currentPM25": attributes.get("currentPM25"),
-            "currentRH": attributes.get("currentRH"),
-            "currentCO2": attributes.get("currentCO2"),
-            "currentTemperature": attributes.get("currentTemperature"),
-            "maxMeasuredPM25": attributes.get("maxMeasuredPM25"),
-            "minMeasuredPM25": attributes.get("minMeasuredPM25"),
-            "maxMeasuredCO2": attributes.get("maxMeasuredCO2"),
-            "minMeasuredCO2": attributes.get("minMeasuredCO2"),
-            "vocIndex": attributes.get("vocIndex"),
-        }
+    attributes = device["attributes"]
+    formatted_entry = {
+        "id": device.get("id"),
+        "timestamp": device.get("lastSeen"),
+        "serialNumber": attributes.get("serialNumber"),
+        "name": attributes.get("customName"),
+        "productCode": attributes.get("productCode"),
+        "firmwareVersion": attributes.get("firmwareVersion"),
+        "hardwareVersion": attributes.get("hardwareVersion"),
+        "isOn": int(attributes.get("isOn")) if attributes.get("isOn") is not None else None,
+        "currentPM25": attributes.get("currentPM25"),
+        "currentRH": attributes.get("currentRH"),
+        "currentCO2": attributes.get("currentCO2"),
+        "currentTemperature": attributes.get("currentTemperature"),
+        "maxMeasuredPM25": attributes.get("maxMeasuredPM25"),
+        "minMeasuredPM25": attributes.get("minMeasuredPM25"),
+        "maxMeasuredCO2": attributes.get("maxMeasuredCO2"),
+        "minMeasuredCO2": attributes.get("minMeasuredCO2"),
+        "vocIndex": attributes.get("vocIndex"),
+        "currentActivePower": attributes.get("currentActivePower"),
+        "totalEnergyConsumed": attributes.get("totalEnergyConsumed")
+    }
 
-        formatted_data.append(formatted_entry)
+    formatted_data.append(formatted_entry)
 
 json.dump(formatted_data, sys.stdout)
