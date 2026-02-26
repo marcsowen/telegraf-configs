@@ -40,7 +40,6 @@ for module in range(1, 3):
             "fault": data[47],
             "soc": data[24] * 0.1,
             "voltage": data[48 + cell] * 0.001,
-            "datapoint": cell // 4,
             "temperature": data[177 + cell // 4] >> 8 if (cell % 4) // 2 == 0 else data[177 + cell // 4] & 0xFF,
         }
 
