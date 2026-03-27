@@ -14,7 +14,7 @@ query FetchPriceInfo($homeId: ID!) {
   viewer {
     home(id: $homeId) {
       currentSubscription {
-        priceInfo {
+        priceInfo(resolution: QUARTER_HOURLY) {
           today {
             total
             startsAt
